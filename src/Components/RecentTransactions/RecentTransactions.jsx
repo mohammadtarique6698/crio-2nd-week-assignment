@@ -1,15 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  BarChart,
-  Bar,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
 
 import { MdOutlineFoodBank } from "react-icons/md";
 import { GiClothes } from "react-icons/gi";
@@ -21,6 +10,8 @@ import { MdCancel } from "react-icons/md";
 import { FaRupeeSign } from "react-icons/fa";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { BiRightArrowAlt } from "react-icons/bi";
+
+import BarGraph from "../Chart/BarChart.jsx";
 
 import "./RecentTransactions.css";
 
@@ -295,33 +286,7 @@ const RecentTransactions = ({ transactions, updateTransactions }) => {
                   paddingLeft: "1rem",
                 }}
               >
-                <ResponsiveContainer width="100%" height={200}>
-                  <BarChart
-                    layout="vertical"
-                    data={dataForBarGraph}
-                    margin={{ top: 20, bottom: 10 }}
-                    barCategoryGap={20}
-                  >
-                    <XAxis
-                      type="number"
-                      axisLine={false}
-                      tickLine={false}
-                      tick={false}
-                    />
-                    <YAxis
-                      dataKey="name"
-                      type="category"
-                      axisLine={false}
-                      tickLine={false}
-                    />
-                    <Tooltip />
-                    <Bar
-                      dataKey="value"
-                      fill="#8884d8"
-                      radius={[0, 15, 15, 0]}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
+                <BarGraph data={dataForBarGraph} />
               </div>
             </div>
           </div>
