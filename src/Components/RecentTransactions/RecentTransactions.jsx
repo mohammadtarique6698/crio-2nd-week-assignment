@@ -41,7 +41,8 @@ const RecentTransactions = ({ transactions, updateTransactions }) => {
     }
   }, []);
 
-  if (!Array.isArray(transactions)) {
+  // Ensure transactions is defined before checking its type
+  if (typeof transactions === "undefined" || !Array.isArray(transactions)) {
     transactions = [];
   }
 
