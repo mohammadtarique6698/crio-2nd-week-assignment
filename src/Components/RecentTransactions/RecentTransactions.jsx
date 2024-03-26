@@ -29,13 +29,17 @@ const RecentTransactions = ({ transactions, updateTransactions }) => {
     const getDataFromLocalStorage = JSON.parse(
       window.localStorage.getItem("expenses")
     );
-    const getDataForBar = getDataFromLocalStorage.map((transaction) => ({
-      name: transaction.category,
-      value: parseFloat(transaction.price),
-    }));
-    setDataForBarGraph(getDataForBar);
+    if (getDataFromLocalStorage) {
+      const getDataForBar = getDataFromLocalStorage.map((transaction) => ({
+        name: transaction.category,
+        value: parseFloat(transaction.price),
+      }));
+      setDataForBarGraph(getDataForBar);
+    } else {
+      // Handle case where there is no data in local storage
+      setDataForBarGraph([]); // Or any other appropriate handling
+    }
   }, []);
-  console.log(dataForBarGraph);
 
   if (!Array.isArray(transactions)) {
     transactions = [];
